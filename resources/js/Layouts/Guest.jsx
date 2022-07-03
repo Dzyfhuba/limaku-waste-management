@@ -6,9 +6,7 @@ import NavLink from '@/Components/NavLink';
 export default function Guest({ children }) {
     return (
         <div className="background-primary">
-            <div className="">
-                {children}
-            </div>
+            {children}
         </div>
     );
 }

@@ -1,5 +1,6 @@
 @import '~bootstrap/scss/bootstrap';
 @import 'NavBar.scss';
+@import 'mediaQuery.scss';
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0');
 .body {
@@ -16,6 +17,12 @@
     color: #fff;
     text-decoration: none;
     border-radius: 23px;
+    border: 1px solid #484848;
+    &:hover {
+        background-color: #EFF0F2;
+        color: #484848;
+        border: 1px solid #484848;
+    }
 }
 
 .jumbotron {

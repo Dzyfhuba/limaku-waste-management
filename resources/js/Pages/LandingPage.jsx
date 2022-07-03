@@ -5,6 +5,8 @@ import NavLink from '@/Components/NavLink';
 import Button from '@/Components/Button';
 import NavBrand from '@/Components/NavBrand';
 import ButtonAnchor from '@/Components/ButtonAnchor';
+import NavBar from '@/Containers/NavBar';
+import Footer from '@/Containers/Footer';
 
 
 const toggleNavbar = (e) => {
@@ -32,21 +34,9 @@ const toggleNavbar = (e) => {
     // }
 }
 export default function LandingPage(props) {
-    const navStyles = {
-        position: 'fixed',
-    }
     return (
         <Guest>
-            <nav className='navbar navbar-light container-xl' style={navStyles}>
-                <NavBrand>LIMAKU</NavBrand>
-                <div className="d-sm-flex d-none" id="navList">
-                    <NavLink href='/exchange'>Tukar Uang</NavLink>
-                    <a href="/login" className="navigation-link">Login</a>
-                </div>
-                <Button type='button' className='d-sm-none border-0' onClick={toggleNavbar}>
-                    <span className="material-symbols-outlined" style={{ color: '#484848' }} >menu</span>
-                </Button>
-            </nav>
+            <NavBar></NavBar>
             <main>
                 <article className='jumbotron'>
                     <div className="container">
@@ -54,10 +44,11 @@ export default function LandingPage(props) {
                             <div className=""><span>Selamat Datang</span></div>
                             <div className=""><span>Di Limaku</span></div>
                         </h1>
-                        <ButtonAnchor>Let`s Get Started</ButtonAnchor>
+                        <ButtonAnchor href={'/login'}>Let`s Get Started</ButtonAnchor>
                     </div>
                 </article>
             </main>
+            <Footer></Footer>
         </Guest>
     );
 }

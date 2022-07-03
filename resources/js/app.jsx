@@ -1,5 +1,6 @@
 import './bootstrap';
 import 'bootstrap';
+import 'bootstrap-icons/font/bootstrap-icons.scss';
 import '../sass/app.scss';
 
 import React from 'react';
