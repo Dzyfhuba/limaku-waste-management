@@ -1,3 +1,21 @@
 nav.navbar {
     height: 70px;
 }
+
+.navigation-link {
+    border: 1px solid black;
+    border-radius: 23px;
+    background-color: #484848;
+    color: #fff;
+    width: 186px;
+    height: 46px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover {
+        color: #484848;
+        background-color: #EFF0F2;
+        border-color: #484848;
+    }
+}
