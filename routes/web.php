@@ -32,4 +32,9 @@ Route::get('/', function () {
     // return Inertia::render('Dashboard');
 })->name('dashboard');
 
+Route::get('/auth/check', function () {
+    $isAuth = (Auth::check()) ? true : false;
+    return response()->json($isAuth);
+});
+
 require __DIR__ . '/auth.php';

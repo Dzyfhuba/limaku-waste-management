@@ -1,7 +1,7 @@
 @import '~bootstrap/scss/bootstrap';
 @import 'NavBar.scss';
 @import 'mediaQuery.scss';
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Nunito+Sans:wght@200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0');
 .body {
     font-family: 'Montserrat', sans-serif;
@@ -36,4 +36,9 @@
         align-items: flex-start;
         justify-content: center;
     }
+}
+
+#login h1 {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 700;
 }
