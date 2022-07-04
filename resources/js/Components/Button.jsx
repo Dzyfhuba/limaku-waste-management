@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Button({
     type = "submit",
-    className = "",
+    className = "btn",
     styles,
     processing,
     onClick,
@@ -11,11 +11,7 @@ export default function Button({
     return (
         <button
             type={type}
-            className={
-                `inline-flex items-center px-4 py-2 bg-gray-900 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest active:bg-gray-900 transition ease-in-out duration-150 ${
-                    processing && "opacity-25"
-                } ` + className
-            }
+            className={className}
             onClick={onClick}
             disabled={processing}
             style={styles}
