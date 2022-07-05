@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\WasteController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -39,6 +40,15 @@ Route::get('/about', function () {
 Route::get('/auth/check', function () {
     $isAuth = (Auth::check()) ? true : false;
     return response()->json($isAuth);
+});
+
+Route::controller(WasteController::class)->group(function () {
+    Route::get('/waste', 'index');
+    Route::post('/waste', 'store');
+});
+
+Route::get('/token', function () {
+    return csrf_token();
 });
 
 require __DIR__ . '/auth.php';
