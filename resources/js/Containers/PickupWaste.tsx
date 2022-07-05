@@ -26,6 +26,7 @@ export default function Waste() {
         event.preventDefault();
         const data = {
             depositor,
+            service_type: "pickup",
             type,
             weight,
             location,

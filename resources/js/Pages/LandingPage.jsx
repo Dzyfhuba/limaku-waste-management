@@ -7,7 +7,8 @@ import NavBrand from "@/Components/NavBrand";
 import ButtonAnchor from "@/Components/ButtonAnchor";
 import NavBar from "@/Containers/NavBar";
 import Footer from "@/Containers/Footer";
-import Waste from "@/Containers/Waste";
+import PickupWaste from "@/Containers/PickupWaste";
+import DropoffWaste from "@/Containers/DropoffWaste";
 
 export default function LandingPage(props) {
     return (
@@ -29,7 +30,8 @@ export default function LandingPage(props) {
                         </ButtonAnchor>
                     </div>
                 </article>
-                <Waste></Waste>
+                <PickupWaste></PickupWaste>
+                <DropoffWaste></DropoffWaste>
             </main>
             <Footer></Footer>
         </Guest>

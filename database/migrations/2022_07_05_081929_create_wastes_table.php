@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('wastes', function (Blueprint $table) {
             $table->id();
             $table->string('depositor');
+            $table->string('service_type');
             $table->string('type');
             $table->double('weight');
             $table->text('location');

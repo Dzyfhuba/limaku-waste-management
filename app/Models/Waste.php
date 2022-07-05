@@ -12,6 +12,7 @@ class Waste extends Model
 
     protected $fillable = [
         'depositor',
+        'service_type',
         'type',
         'weight',
         'location',
