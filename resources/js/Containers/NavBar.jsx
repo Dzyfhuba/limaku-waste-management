@@ -182,7 +182,7 @@ export default function NavBar({ ...props }) {
                                     method="post"
                                     as="button"
                                     className="w-100 btn"
-                                    onClick={(e) => setAuth(false)}
+                                    onClick={() => setAuth(false)}
                                 >
                                     Log Out
                                 </Link>

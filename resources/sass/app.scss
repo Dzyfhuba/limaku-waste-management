@@ -7,6 +7,23 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
+main {
+    min-height: 100vh;
+    padding: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    @media screen and (max-width: 768px) {
+        padding: 70px 0;
+    }
+}
+
+.size-sm-big {
+    @media screen and (max-width: 768px) {
+        font-size: xx-large;
+    }
+}
+
 .username {
     text-overflow: ellipsis;
     white-space: nowrap;

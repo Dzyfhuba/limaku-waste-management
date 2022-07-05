@@ -6,7 +6,7 @@ import { Head } from '@inertiajs/inertia-react';
 
 export default function LandingPage(props) {
     return (
-        <Guest className="bg-white">
+        <Guest>
             <Head title='About Us'></Head>
             <NavBar auth={props.auth}></NavBar>
             <main>
