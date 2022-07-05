@@ -4,17 +4,19 @@ import Dropdown from '@/Components/Dropdown';
 import NavBrand from '@/Components/NavBrand';
 import NavLink from '@/Components/NavLink';
 import { Link } from '@inertiajs/inertia-react';
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
 export default function NavBar({ ...props }) {
     const [auth, setAuth] = useState(false);
-    console.log(props);
+    const [profileAvailable, setProfileAvailable] = useState(true);
+
     useEffect(() => {
-        fetch('/auth/check')
-            .then((response) => response.json())
-            .then(setAuth);
-    }, []);
-    console.log(auth);
+        axios.get('/auth/check').then((response) => setAuth(response.data));
+        if (auth) {
+            setProfileAvailable(true);
+        }
+    });
     const login = (
         <Link href={route('login')} className="navigation-link">
             Login
@@ -118,13 +120,14 @@ export default function NavBar({ ...props }) {
                     ></button>
                 </div>
                 <div className="offcanvas-body">
+                    {auth ? '':
                     <NavLink
                         className="w-100 button-primary text-white"
                         href={route('login')}
                         active={undefined}
                     >
                         Login
-                    </NavLink>
+                    </NavLink>}
                     <NavLink className="w-100" href="/" active={undefined}>
                         Dashboard
                     </NavLink>
@@ -138,39 +141,56 @@ export default function NavBar({ ...props }) {
                     <NavLink className="w-100" href="/about" active={undefined}>
                         Tentang Kami
                     </NavLink>
-                    <a
-                        className="btn w-100 d-flex justify-content-center"
-                        data-bs-toggle="collapse"
-                        href="#profileCollapse"
-                        role="button"
-                        aria-expanded="false"
-                        aria-controls="profileCollapse"
-                    >
-                        <span className="username">
-                            {props.auth.user == undefined
-                                ? ''
-                                : props.auth.user.name}
-                        </span>
-                        <span className="material-symbols-outlined ms-2">
-                            account_circle
-                        </span>
-                    </a>
-                    <div className="collapse" id="profileCollapse">
-                        <ButtonAnchor href={'profile'} as="button" className="w-100 btn">
-                            Profile
-                        </ButtonAnchor>
-                        <ButtonAnchor href={'history'} as="button" className="w-100 btn">
-                            History
-                        </ButtonAnchor>
-                        <ButtonAnchor
-                            href={route('logout')}
-                            method="post"
-                            as="button"
-                            className="w-100 btn"
-                        >
-                            Log Out
-                        </ButtonAnchor>
-                    </div>
+                    {auth ? (
+                        <>
+                            <a
+                                className={`btn w-100 d-flex justify-content-center${
+                                    profileAvailable ? '' : ' d-none'
+                                }`}
+                                data-bs-toggle="collapse"
+                                href="#profileCollapse"
+                                role="button"
+                                aria-expanded="false"
+                                aria-controls="profileCollapse"
+                            >
+                                <span className="username">
+                                    {props.auth.user == undefined
+                                        ? ''
+                                        : props.auth.user.name}
+                                </span>
+                                <span className="material-symbols-outlined ms-2">
+                                    account_circle
+                                </span>
+                            </a>
+                            <div className="collapse" id="profileCollapse">
+                                <ButtonAnchor
+                                    href={'profile'}
+                                    as="button"
+                                    className="w-100 btn"
+                                >
+                                    Profile
+                                </ButtonAnchor>
+                                <ButtonAnchor
+                                    href={'history'}
+                                    as="button"
+                                    className="w-100 btn"
+                                >
+                                    History
+                                </ButtonAnchor>
+                                <Link
+                                    href={route('logout')}
+                                    method="post"
+                                    as="button"
+                                    className="w-100 btn"
+                                    onClick={(e) => setAuth(false)}
+                                >
+                                    Log Out
+                                </Link>
+                            </div>
+                        </>
+                    ) : (
+                        ''
+                    )}
                 </div>
             </div>
         </nav>

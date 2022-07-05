@@ -5,11 +5,12 @@ const ButtonAnchor = ({
     href,
     role = 'button',
     style,
+    method,
     className = 'button-primary',
     children,
 }) => {
     return (
-        <Link role={role} href={href} className={className} style={style}>
+        <Link role={role} href={href} className={className} style={style} method={method}>
             {children}
         </Link>
     );

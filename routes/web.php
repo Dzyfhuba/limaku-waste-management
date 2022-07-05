@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\WasteController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
@@ -38,7 +39,7 @@ Route::get('/about', function () {
 });
 
 Route::get('/auth/check', function () {
-    $isAuth = (Auth::check()) ? true : false;
+    $isAuth = Auth::check() ? true : false;
     return response()->json($isAuth);
 });
 
@@ -46,6 +47,13 @@ Route::controller(WasteController::class)->group(function () {
     Route::get('/waste', 'index');
     Route::get('/waste/types', 'getTypes');
     Route::post('/waste', 'store');
+});
+
+Route::get('/history', function () {
+    return Inertia::render('History');
+})->middleware('auth');
+Route::controller(HistoryController::class)->group(function () {
+    Route::get('/history/get', 'index');
 });
 
 Route::get('/token', function () {

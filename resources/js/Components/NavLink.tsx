@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from '@inertiajs/inertia-react';
 
-export default function NavLink({ className, href, active, method, children }) {
+export default function NavLink({ className, href, active, method='get', children }) {
     const styles = {
         width: 186,
         height: 46,
@@ -16,7 +16,7 @@ export default function NavLink({ className, href, active, method, children }) {
                 active ? 'nav-link text-center' : 'nav-link text-center'
             } ${className}`}
             style={styles}
-            method="get"
+            method={method}
         >
             {children}
         </Link>
