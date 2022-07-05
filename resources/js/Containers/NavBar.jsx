@@ -4,6 +4,7 @@ import NavBrand from "@/Components/NavBrand";
 import NavLink from "@/Components/NavLink";
 import { Link } from "@inertiajs/inertia-react";
 import React, { useEffect, useState } from "react";
+import $ from "jquery";
 
 export default function NavBar({ ...props }) {
     const [auth, setAuth] = useState(false);
@@ -35,7 +36,7 @@ export default function NavBar({ ...props }) {
         <Dropdown>
             <Dropdown.Trigger>
                 <span
-                    className="inline-flex rounded-md justify-content-center"
+                    className="inline-flex rounded-lg justify-content-center"
                     style={{ display: "inline-flex" }}
                 >
                     <Button
@@ -49,7 +50,7 @@ export default function NavBar({ ...props }) {
                         {props.auth.user == undefined
                             ? ""
                             : props.auth.user.name}
-                        <span className="material-symbols-outlined ms-2 d-md-block d-none">
+                        <span className="material-symbols-outlined ms-2 d-lg-block d-none">
                             account_circle
                         </span>
                     </Button>
@@ -70,45 +71,31 @@ export default function NavBar({ ...props }) {
         </Dropdown>
     );
 
-    const toggleNavbar = (e) => {
-        const navList = document.querySelector("#navList");
-        navList.classList.toggle("d-none");
-        navList.classList.toggle("position-fixed");
-        navList.classList.toggle("w-100");
-        // navList.querySelector("*").toggle("w-100");
-        // navList.classList.toggle("d-flex");
-        navList.classList.toggle("flex-column");
-        navList.classList.toggle("justify-content-evenly");
-        navList.classList.toggle("open");
-        navList.querySelector("*").classList.toggle("w-auto");
-        if (navList.classList.contains("open")) {
-            navList.style.top = "70px";
-        } else {
-            navList.style.top = "0px";
-        }
-        console.log(navList.classList.contains("open"));
-        navList.style.backgroundColor = "#EFF0F2";
-    };
-
     return (
         <nav
             className="navbar navbar-light"
             style={{ position: "fixed", zIndex: 99999 }}
         >
             <NavBrand href={undefined}>LIMAKU</NavBrand>
-            <div className="d-md-flex d-none" id="navList">
+            <div className="d-lg-flex d-none" id="navList">
+                <NavLink href="/" active={undefined}>
+                    Dashboard
+                </NavLink>
                 <NavLink href="/exchange" active={undefined}>
-                    Tukar Uang
+                    Tukar Tunai
+                </NavLink>
+                <NavLink href="/about" active={undefined}>
+                    Tentang Kami
                 </NavLink>
 
                 {auth ? profile : login}
             </div>
-            <Button
+            <button
+                className="btn d-lg-none"
                 type="button"
-                className="d-md-none border-0"
-                onClick={toggleNavbar}
-                processing={undefined}
-                styles={undefined}
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasRight"
+                aria-controls="offcanvasRight"
             >
                 <span
                     className="material-symbols-outlined"
@@ -116,7 +103,40 @@ export default function NavBar({ ...props }) {
                 >
                     menu
                 </span>
-            </Button>
+            </button>
+
+            <div
+                className="offcanvas offcanvas-end"
+                tabIndex="-1"
+                id="offcanvasRight"
+                aria-labelledby="offcanvasRightLabel"
+                data-bs-scroll="true"
+            >
+                <div className="offcanvas-header">
+                    <h5 id="offcanvasRightLabel"></h5>
+                    <button
+                        type="button"
+                        className="btn-close text-reset"
+                        data-bs-dismiss="offcanvas"
+                        aria-label="Close"
+                    ></button>
+                </div>
+                <div className="offcanvas-body">
+                    <NavLink className="w-100" href="/" active={undefined}>
+                        Dashboard
+                    </NavLink>
+                    <NavLink
+                        className="w-100"
+                        href="/exchange"
+                        active={undefined}
+                    >
+                        Tukar Tunai
+                    </NavLink>
+                    <NavLink className="w-100" href="/about" active={undefined}>
+                        Tentang Kami
+                    </NavLink>
+                </div>
+            </div>
         </nav>
     );
 }
