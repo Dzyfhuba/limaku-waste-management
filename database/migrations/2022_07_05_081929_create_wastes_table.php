@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,11 +17,11 @@ return new class extends Migration
         Schema::create('wastes', function (Blueprint $table) {
             $table->id();
             $table->string('depositor');
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignIdFor(User::class);
             $table->string('type');
             $table->double('weight');
             $table->text('location');
-            $table->date('collected_at')->nullable();
+            $table->dateTime('collected_at')->nullable();
             $table->timestamps();
         });
     }

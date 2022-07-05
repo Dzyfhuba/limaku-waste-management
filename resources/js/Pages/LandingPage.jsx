@@ -10,7 +10,7 @@ import DropoffWaste from '@/Containers/DropoffWaste';
 export default function LandingPage(props) {
     return (
         <Guest>
-            <Head title="LIMAKU"></Head>
+            <Head title='Dashboard'></Head>
             <NavBar auth={props.auth}></NavBar>
             <main>
                 <article className="jumbotron">

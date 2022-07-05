@@ -2,10 +2,12 @@ import React from 'react';
 import Guest from '@/Layouts/Guest';
 import NavBar from '@/Containers/NavBar';
 import Footer from '@/Containers/Footer';
+import { Head } from '@inertiajs/inertia-react';
 
 export default function LandingPage(props) {
     return (
         <Guest className="bg-white">
+            <Head title='About Us'></Head>
             <NavBar auth={props.auth}></NavBar>
             <main>
                 <div className="container">
