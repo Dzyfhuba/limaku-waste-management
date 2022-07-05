@@ -18,6 +18,11 @@ class WasteController extends Controller
         //
     }
 
+    public function getTypes()
+    {
+        return response()->json(['organic', 'inorganic'])->setStatusCode(200);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -39,6 +44,7 @@ class WasteController extends Controller
         $waste = Waste::create($request->all());
         return response()->json([
             'error' => false,
+            'status' => 'success',
             'message' => 'Store was successfully'
         ])->setStatusCode(201);
     }

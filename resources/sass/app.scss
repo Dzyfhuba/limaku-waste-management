@@ -1,9 +1,9 @@
 @import '~bootstrap/scss/bootstrap';
 @import 'NavBar.scss';
 @import 'mediaQuery.scss';
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Nunito+Sans:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Nunito+Sans:wght@200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0&family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
-.body {
+body {
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -23,6 +23,14 @@
         color: #484848;
         border: 1px solid #484848;
     }
+}
+
+.button-submit {
+    background-color: #484848;
+    color: #fff;
+    width: 220px;
+    height: 60px;
+    border-radius: 30px;
 }
 
 .jumbotron {

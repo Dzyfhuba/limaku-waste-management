@@ -7,6 +7,7 @@ import NavBrand from "@/Components/NavBrand";
 import ButtonAnchor from "@/Components/ButtonAnchor";
 import NavBar from "@/Containers/NavBar";
 import Footer from "@/Containers/Footer";
+import Waste from "@/Containers/Waste";
 
 export default function LandingPage(props) {
     return (
@@ -28,6 +29,7 @@ export default function LandingPage(props) {
                         </ButtonAnchor>
                     </div>
                 </article>
+                <Waste></Waste>
             </main>
             <Footer></Footer>
         </Guest>

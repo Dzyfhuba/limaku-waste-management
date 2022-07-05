@@ -44,6 +44,7 @@ Route::get('/auth/check', function () {
 
 Route::controller(WasteController::class)->group(function () {
     Route::get('/waste', 'index');
+    Route::get('/waste/types', 'getTypes');
     Route::post('/waste', 'store');
 });
 
