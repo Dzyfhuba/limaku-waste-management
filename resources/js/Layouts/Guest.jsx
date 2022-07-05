@@ -1,8 +1,5 @@
-import React from "react";
-import ApplicationLogo from "@/Components/ApplicationLogo";
-import { Link } from "@inertiajs/inertia-react";
-import NavLink from "@/Components/NavLink";
+import React from 'react';
 
-export default function Guest({ className = "background-primary", children }) {
+export default function Guest({ className = 'background-primary', children }) {
     return <div className={`${className}`}>{children}</div>;
 }

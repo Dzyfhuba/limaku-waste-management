@@ -1,34 +1,22 @@
-import Button from "@/Components/Button";
-import Dropdown from "@/Components/Dropdown";
-import NavBrand from "@/Components/NavBrand";
-import NavLink from "@/Components/NavLink";
-import { Link } from "@inertiajs/inertia-react";
-import React, { useEffect, useState } from "react";
-import $ from "jquery";
+import Button from '@/Components/Button';
+import Dropdown from '@/Components/Dropdown';
+import NavBrand from '@/Components/NavBrand';
+import NavLink from '@/Components/NavLink';
+import { Link } from '@inertiajs/inertia-react';
+import React, { useEffect, useState } from 'react';
 
 export default function NavBar({ ...props }) {
     const [auth, setAuth] = useState(false);
     console.log(props);
     useEffect(() => {
-        fetch("/auth/check")
+        fetch('/auth/check')
             .then((response) => response.json())
             .then(setAuth);
     }, []);
     console.log(auth);
     const login = (
-        <Link href={route("login")} className="navigation-link">
+        <Link href={route('login')} className="navigation-link">
             Login
-        </Link>
-    );
-
-    const logout = (
-        <Link
-            href={route("logout")}
-            className="navigation-link"
-            method="post"
-            as="button"
-        >
-            Logout
         </Link>
     );
 
@@ -37,19 +25,21 @@ export default function NavBar({ ...props }) {
             <Dropdown.Trigger>
                 <span
                     className="inline-flex rounded-lg justify-content-center"
-                    style={{ display: "inline-flex" }}
+                    style={{ display: 'inline-flex' }}
                 >
                     <Button
                         type="button"
                         className="btn d-flex justify-content-center"
                         styles={{
-                            width: "184px",
-                            padding: "10px",
+                            width: '184px',
+                            padding: '10px',
                         }}
                     >
-                        {props.auth.user == undefined
-                            ? ""
-                            : props.auth.user.name}
+                        <span className="username">
+                            {props.auth.user == undefined
+                                ? ''
+                                : props.auth.user.name}
+                        </span>
                         <span className="material-symbols-outlined ms-2 d-lg-block d-none">
                             account_circle
                         </span>
@@ -58,13 +48,13 @@ export default function NavBar({ ...props }) {
             </Dropdown.Trigger>
 
             <Dropdown.Content>
-                <Dropdown.Link href={"profile"} as="button">
+                <Dropdown.Link href={'profile'} as="button">
                     Profile
                 </Dropdown.Link>
-                <Dropdown.Link href={"history"} as="button">
+                <Dropdown.Link href={'history'} as="button">
                     History
                 </Dropdown.Link>
-                <Dropdown.Link href={route("logout")} method="post" as="button">
+                <Dropdown.Link href={route('logout')} method="post" as="button">
                     Log Out
                 </Dropdown.Link>
             </Dropdown.Content>
@@ -74,7 +64,7 @@ export default function NavBar({ ...props }) {
     return (
         <nav
             className="navbar navbar-light"
-            style={{ position: "fixed", zIndex: 99999 }}
+            style={{ position: 'fixed', zIndex: 99999 }}
         >
             <NavBrand href={undefined}>LIMAKU</NavBrand>
             <div className="d-lg-flex d-none" id="navList">
@@ -99,7 +89,7 @@ export default function NavBar({ ...props }) {
             >
                 <span
                     className="material-symbols-outlined"
-                    style={{ color: "#484848" }}
+                    style={{ color: '#484848' }}
                 >
                     menu
                 </span>

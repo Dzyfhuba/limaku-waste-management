@@ -1,11 +1,10 @@
-import { Link } from "@inertiajs/inertia-react";
-import * as React from "react";
-import { useState } from "react";
+import { Link } from '@inertiajs/inertia-react';
+import * as React from 'react';
 
 class Footer extends React.Component {
     render() {
         return (
-            <footer style={{ backgroundColor: "#EFF0F2" }}>
+            <footer style={{ backgroundColor: '#EFF0F2' }}>
                 <div className="container py-5">
                     <div className="row justify-content-between">
                         <div className="col-md-5">

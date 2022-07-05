@@ -1,18 +1,16 @@
-import React from "react";
-import Guest from "@/Layouts/Guest";
-import { Head } from "@inertiajs/inertia-react";
-import NavLink from "@/Components/NavLink";
-import Button from "@/Components/Button";
-import NavBrand from "@/Components/NavBrand";
-import ButtonAnchor from "@/Components/ButtonAnchor";
-import NavBar from "@/Containers/NavBar";
-import Footer from "@/Containers/Footer";
-import PickupWaste from "@/Containers/PickupWaste";
-import DropoffWaste from "@/Containers/DropoffWaste";
+import React from 'react';
+import Guest from '@/Layouts/Guest';
+import { Head } from '@inertiajs/inertia-react';
+import ButtonAnchor from '@/Components/ButtonAnchor';
+import NavBar from '@/Containers/NavBar';
+import Footer from '@/Containers/Footer';
+import PickupWaste from '@/Containers/PickupWaste';
+import DropoffWaste from '@/Containers/DropoffWaste';
 
 export default function LandingPage(props) {
     return (
         <Guest>
+            <Head title="LIMAKU"></Head>
             <NavBar auth={props.auth}></NavBar>
             <main>
                 <article className="jumbotron">
@@ -25,7 +23,7 @@ export default function LandingPage(props) {
                                 <span>Di Limaku</span>
                             </div>
                         </h1>
-                        <ButtonAnchor href={"/login"}>
+                        <ButtonAnchor href={props.auth ? '/#pickup' : '/login'}>
                             Let`s Get Started
                         </ButtonAnchor>
                     </div>

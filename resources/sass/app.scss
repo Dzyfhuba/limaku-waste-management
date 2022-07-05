@@ -7,6 +7,11 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
+.username {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .background-primary {
     background-color: #EFF0F2;
 }

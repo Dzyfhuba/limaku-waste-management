@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "@inertiajs/inertia-react";
+import React from 'react';
+import { Link } from '@inertiajs/inertia-react';
 
 export default function NavBrand({ href, children }) {
     const styles = {
@@ -8,7 +8,7 @@ export default function NavBrand({ href, children }) {
         fontSize: '1.5rem',
     };
   return (
-    <Link href={href} className={"nav-link"} style={styles}>
+    <Link href={href} className={'nav-link'} style={styles}>
       {children}
     </Link>
   );

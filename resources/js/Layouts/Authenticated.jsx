@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import ApplicationLogo from "@/Components/ApplicationLogo";
-import Dropdown from "@/Components/Dropdown";
-import NavLink from "@/Components/NavLink";
-import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
-import { Link } from "@inertiajs/inertia-react";
+import React, { useState } from 'react';
+import ApplicationLogo from '@/Components/ApplicationLogo';
+import Dropdown from '@/Components/Dropdown';
+import NavLink from '@/Components/NavLink';
+import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
+import { Link } from '@inertiajs/inertia-react';
 
 export default function Authenticated({ auth, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
@@ -23,8 +23,8 @@ export default function Authenticated({ auth, header, children }) {
 
                             <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <NavLink
-                                    href={route("dashboard")}
-                                    active={route().current("dashboard")}
+                                    href={route('dashboard')}
+                                    active={route().current('dashboard')}
                                 >
                                     Dashboard
                                 </NavLink>
@@ -60,7 +60,7 @@ export default function Authenticated({ auth, header, children }) {
 
                                     <Dropdown.Content>
                                         <Dropdown.Link
-                                            href={route("logout")}
+                                            href={route('logout')}
                                             method="post"
                                             as="button"
                                         >
@@ -89,8 +89,8 @@ export default function Authenticated({ auth, header, children }) {
                                     <path
                                         className={
                                             !showingNavigationDropdown
-                                                ? "inline-flex"
-                                                : "hidden"
+                                                ? 'inline-flex'
+                                                : 'hidden'
                                         }
                                         strokeLinecap="round"
                                         strokeLinejoin="round"
@@ -100,8 +100,8 @@ export default function Authenticated({ auth, header, children }) {
                                     <path
                                         className={
                                             showingNavigationDropdown
-                                                ? "inline-flex"
-                                                : "hidden"
+                                                ? 'inline-flex'
+                                                : 'hidden'
                                         }
                                         strokeLinecap="round"
                                         strokeLinejoin="round"
@@ -116,14 +116,14 @@ export default function Authenticated({ auth, header, children }) {
 
                 <div
                     className={
-                        (showingNavigationDropdown ? "block" : "hidden") +
-                        " sm:hidden"
+                        (showingNavigationDropdown ? 'block' : 'hidden') +
+                        ' sm:hidden'
                     }
                 >
                     <div className="pt-2 pb-3 space-y-1">
                         <ResponsiveNavLink
-                            href={route("dashboard")}
-                            active={route().current("dashboard")}
+                            href={route('dashboard')}
+                            active={route().current('dashboard')}
                         >
                             Dashboard
                         </ResponsiveNavLink>
@@ -142,7 +142,7 @@ export default function Authenticated({ auth, header, children }) {
                         <div className="mt-3 space-y-1">
                             <ResponsiveNavLink
                                 method="post"
-                                href={route("logout")}
+                                href={route('logout')}
                                 as="button"
                             >
                                 Log Out

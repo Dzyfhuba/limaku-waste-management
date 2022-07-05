@@ -1,7 +1,7 @@
-import axios from "axios";
-import { capitalize } from "lodash";
-import React, { useEffect, useState } from "react";
-import swal from "sweetalert";
+import axios from 'axios';
+import { capitalize } from 'lodash';
+import React, { useEffect, useState } from 'react';
+import swal from 'sweetalert';
 
 export default function Waste() {
     const [typeOptions, setTypeOptions] = useState([]);
@@ -13,7 +13,7 @@ export default function Waste() {
 
     useEffect(() => {
         axios
-            .get("/waste/types")
+            .get('/waste/types')
             .then((response) => setTypeOptions(response.data));
     }, []);
 
@@ -26,31 +26,35 @@ export default function Waste() {
         event.preventDefault();
         const data = {
             depositor,
-            service_type: "pickup",
+            service_type: 'pickup',
             type,
             weight,
             location,
         };
 
         axios
-            .post("/waste", data)
+            .post('/waste', data)
             .then((response) => {
-                swal(response.data.message, "", response.data.status);
-                setDepositor("");
-                setType("");
-                setWeight("");
-                setLocation("");
+                swal(response.data.message, '', response.data.status);
+                setDepositor('');
+                setType('');
+                setWeight('');
+                setLocation('');
                 setDisabled(true);
                 event.target.reset();
             })
             .catch((error) => console.error(error));
     };
-    const handleFormChange = (event) => {
+    const handleFormChange = () => {
         setDisabled(false);
     };
 
     return (
-        <div className="container" style={{ minHeight: "100vh" }}>
+        <div
+            className="container d-flex justify-content-center flex-column"
+            style={{ minHeight: '100vh' }}
+            id="pickup"
+        >
             <h1 className="text-center fw-bolder">Pickup</h1>
             <form onSubmit={handleSubmit} onChange={handleFormChange}>
                 <div className="mb-3">
@@ -65,6 +69,7 @@ export default function Waste() {
                         aria-describedby="helpId"
                         placeholder="Depositor"
                         onChange={handleDepositorChange}
+                        required
                     ></input>
                 </div>
                 <div className="mb-3">
@@ -76,6 +81,7 @@ export default function Waste() {
                         name="type"
                         id="type"
                         onChange={handleTypeChange}
+                        required
                     >
                         <option value="" hidden>
                             Pilih jenis sampah
@@ -101,6 +107,7 @@ export default function Waste() {
                         aria-describedby="helpId"
                         placeholder="Berat Sampah (Kg)"
                         onChange={handleWeightChange}
+                        required
                     ></input>
                 </div>
                 <div className="mb-3">
@@ -117,13 +124,14 @@ export default function Waste() {
                         id="location"
                         placeholder="Alamat"
                         onChange={handleLocationChange}
+                        required
                     ></textarea>
                 </div>
                 <div className="d-flex justify-content-end">
                     <button
                         type="submit"
                         className={`btn button-submit${
-                            disabled ? " disabled" : ""
+                            disabled ? ' disabled' : ''
                         }`}
                     >
                         Konfirmasi

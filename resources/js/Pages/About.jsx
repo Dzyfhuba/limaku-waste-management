@@ -1,12 +1,7 @@
-import React from "react";
-import Guest from "@/Layouts/Guest";
-import { Head } from "@inertiajs/inertia-react";
-import NavLink from "@/Components/NavLink";
-import Button from "@/Components/Button";
-import NavBrand from "@/Components/NavBrand";
-import ButtonAnchor from "@/Components/ButtonAnchor";
-import NavBar from "@/Containers/NavBar";
-import Footer from "@/Containers/Footer";
+import React from 'react';
+import Guest from '@/Layouts/Guest';
+import NavBar from '@/Containers/NavBar';
+import Footer from '@/Containers/Footer';
 
 export default function LandingPage(props) {
     return (
