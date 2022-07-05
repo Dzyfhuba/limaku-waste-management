@@ -5,8 +5,8 @@ import { useState } from "react";
 class Footer extends React.Component {
     render() {
         return (
-            <footer>
-                <div className="container">
+            <footer style={{ backgroundColor: "#EFF0F2" }}>
+                <div className="container py-5">
                     <div className="row justify-content-between">
                         <div className="col-md-5">
                             <article>

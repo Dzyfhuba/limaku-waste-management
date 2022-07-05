@@ -32,6 +32,10 @@ Route::get('/', function () {
     // return Inertia::render('Dashboard');
 })->name('dashboard');
 
+Route::get('/about', function () {
+    return Inertia::render('About');
+});
+
 Route::get('/auth/check', function () {
     $isAuth = (Auth::check()) ? true : false;
     return response()->json($isAuth);
