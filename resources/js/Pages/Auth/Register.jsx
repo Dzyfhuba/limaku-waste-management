@@ -1,29 +1,29 @@
-import React, { useEffect } from "react";
-import Button from "@/Components/Button";
-import Guest from "@/Layouts/Guest";
-import Input from "@/Components/Input";
-import Label from "@/Components/Label";
-import ValidationErrors from "@/Components/ValidationErrors";
-import { Head, Link, useForm } from "@inertiajs/inertia-react";
+import React, { useEffect } from 'react';
+import Button from '@/Components/Button';
+import Guest from '@/Layouts/Guest';
+import Input from '@/Components/Input';
+import Label from '@/Components/Label';
+import ValidationErrors from '@/Components/ValidationErrors';
+import { Head, Link, useForm } from '@inertiajs/inertia-react';
 
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
-        name: "",
-        email: "",
-        password: "",
-        password_confirmation: "",
+        name: '',
+        email: '',
+        password: '',
+        password_confirmation: '',
     });
 
     useEffect(() => {
         return () => {
-            reset("password", "password_confirmation");
+            reset('password', 'password_confirmation');
         };
     }, []);
 
     const onHandleChange = (event) => {
         setData(
             event.target.name,
-            event.target.type === "checkbox"
+            event.target.type === 'checkbox'
                 ? event.target.checked
                 : event.target.value
         );
@@ -32,7 +32,7 @@ export default function Register() {
     const submit = (e) => {
         e.preventDefault();
 
-        post(route("register"));
+        post(route('register'));
     };
 
     return (
@@ -41,13 +41,13 @@ export default function Register() {
 
             <ValidationErrors errors={errors} />
             <div
-                className="row justify-content-center align-items-center"
-                style={{ height: "100vh" }}
-                id={"login"}
+                className="row m-0 justify-content-center align-items-center"
+                style={{ height: '100vh' }}
+                id={'login'}
             >
                 <div
                     className="col-md-6 p-5 text-center d-flex flex-column justify-content-between bg-white"
-                    style={{ height: "80%" }}
+                    style={{ height: '80%' }}
                 >
                     <h1>Login to your account</h1>
                     <form onSubmit={submit} className="text-start">
@@ -118,9 +118,9 @@ export default function Register() {
                         </Button>
                     </form>
                     <span className="text-black-50">
-                        Already have an account?{" "}
+                        Already have an account?{' '}
                         <Link
-                            href={route("login")}
+                            href={route('login')}
                             className="text-black text-decoration-none"
                         >
                             Login

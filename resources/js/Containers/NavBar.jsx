@@ -1,4 +1,5 @@
 import Button from '@/Components/Button';
+import ButtonAnchor from '@/Components/ButtonAnchor';
 import Dropdown from '@/Components/Dropdown';
 import NavBrand from '@/Components/NavBrand';
 import NavLink from '@/Components/NavLink';
@@ -21,10 +22,10 @@ export default function NavBar({ ...props }) {
     );
 
     const profile = (
-        <Dropdown>
+        <Dropdown className="w-100">
             <Dropdown.Trigger>
                 <span
-                    className="inline-flex rounded-lg justify-content-center"
+                    className="inline-flex w-100 rounded-lg justify-content-center"
                     style={{ display: 'inline-flex' }}
                 >
                     <Button
@@ -47,14 +48,19 @@ export default function NavBar({ ...props }) {
                 </span>
             </Dropdown.Trigger>
 
-            <Dropdown.Content>
-                <Dropdown.Link href={'profile'} as="button">
+            <Dropdown.Content width="100">
+                <Dropdown.Link href={'profile'} as="button" className="w-100">
                     Profile
                 </Dropdown.Link>
-                <Dropdown.Link href={'history'} as="button">
+                <Dropdown.Link href={'history'} as="button" className="w-100">
                     History
                 </Dropdown.Link>
-                <Dropdown.Link href={route('logout')} method="post" as="button">
+                <Dropdown.Link
+                    href={route('logout')}
+                    method="post"
+                    as="button"
+                    className="w-100"
+                >
                     Log Out
                 </Dropdown.Link>
             </Dropdown.Content>
@@ -112,6 +118,13 @@ export default function NavBar({ ...props }) {
                     ></button>
                 </div>
                 <div className="offcanvas-body">
+                    <NavLink
+                        className="w-100 button-primary text-white"
+                        href={route('login')}
+                        active={undefined}
+                    >
+                        Login
+                    </NavLink>
                     <NavLink className="w-100" href="/" active={undefined}>
                         Dashboard
                     </NavLink>
@@ -125,6 +138,39 @@ export default function NavBar({ ...props }) {
                     <NavLink className="w-100" href="/about" active={undefined}>
                         Tentang Kami
                     </NavLink>
+                    <a
+                        className="btn w-100 d-flex justify-content-center"
+                        data-bs-toggle="collapse"
+                        href="#profileCollapse"
+                        role="button"
+                        aria-expanded="false"
+                        aria-controls="profileCollapse"
+                    >
+                        <span className="username">
+                            {props.auth.user == undefined
+                                ? ''
+                                : props.auth.user.name}
+                        </span>
+                        <span className="material-symbols-outlined ms-2">
+                            account_circle
+                        </span>
+                    </a>
+                    <div className="collapse" id="profileCollapse">
+                        <ButtonAnchor href={'profile'} as="button" className="w-100 btn">
+                            Profile
+                        </ButtonAnchor>
+                        <ButtonAnchor href={'history'} as="button" className="w-100 btn">
+                            History
+                        </ButtonAnchor>
+                        <ButtonAnchor
+                            href={route('logout')}
+                            method="post"
+                            as="button"
+                            className="w-100 btn"
+                        >
+                            Log Out
+                        </ButtonAnchor>
+                    </div>
                 </div>
             </div>
         </nav>

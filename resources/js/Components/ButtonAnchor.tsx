@@ -4,12 +4,12 @@ import * as React from 'react';
 const ButtonAnchor = ({
     href,
     role = 'button',
-    styles,
+    style,
     className = 'button-primary',
     children,
 }) => {
     return (
-        <Link role={role} href={href} className={className} style={styles}>
+        <Link role={role} href={href} className={className} style={style}>
             {children}
         </Link>
     );

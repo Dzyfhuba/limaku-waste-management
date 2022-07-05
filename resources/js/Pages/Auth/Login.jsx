@@ -1,30 +1,30 @@
-import React, { useEffect } from "react";
-import Button from "@/Components/Button";
-import Checkbox from "@/Components/Checkbox";
-import Guest from "@/Layouts/Guest";
-import Input from "@/Components/Input";
-import Label from "@/Components/Label";
-import ValidationErrors from "@/Components/ValidationErrors";
-import { Head, Link, useForm } from "@inertiajs/inertia-react";
-import ButtonAnchor from "@/Components/ButtonAnchor";
+import React, { useEffect } from 'react';
+import Button from '@/Components/Button';
+import Checkbox from '@/Components/Checkbox';
+import Guest from '@/Layouts/Guest';
+import Input from '@/Components/Input';
+import Label from '@/Components/Label';
+import ValidationErrors from '@/Components/ValidationErrors';
+import { Head, Link, useForm } from '@inertiajs/inertia-react';
+import ButtonAnchor from '@/Components/ButtonAnchor';
 
 export default function Login({ status, canResetPassword }) {
     const { data, setData, post, processing, errors, reset } = useForm({
-        email: "",
-        password: "",
-        remember: "",
+        email: '',
+        password: '',
+        remember: '',
     });
 
     useEffect(() => {
         return () => {
-            reset("password");
+            reset('password');
         };
     }, []);
 
     const onHandleChange = (event) => {
         setData(
             event.target.name,
-            event.target.type === "checkbox"
+            event.target.type === 'checkbox'
                 ? event.target.checked
                 : event.target.value
         );
@@ -33,7 +33,7 @@ export default function Login({ status, canResetPassword }) {
     const submit = (e) => {
         e.preventDefault();
 
-        post(route("login"));
+        post(route('login'));
     };
 
     return (
@@ -49,13 +49,13 @@ export default function Login({ status, canResetPassword }) {
             <ValidationErrors errors={errors} />
 
             <div
-                className="row justify-content-center align-items-center"
-                style={{ height: "100vh" }}
-                id={"login"}
+                className="row m-0 justify-content-center align-items-center"
+                style={{ height: '100vh' }}
+                id={'login'}
             >
                 <div
                     className="col-md-6 p-5 text-center d-flex flex-column justify-content-between bg-white"
-                    style={{ height: "80%" }}
+                    style={{ height: '80%' }}
                 >
                     <h1>Login to your account</h1>
 
@@ -87,7 +87,7 @@ export default function Login({ status, canResetPassword }) {
                             />
                         </div>
 
-                        <div className="d-flex justify-content-between mb-5">
+                        <div className="d-flex justify-content-between mb-5 mt-3">
                             <div className="">
                                 <label className="flex items-center">
                                     <Checkbox
@@ -103,7 +103,7 @@ export default function Login({ status, canResetPassword }) {
                             </div>
                             {canResetPassword && (
                                 <Link
-                                    href={route("password.request")}
+                                    href={route('password.request')}
                                     className="text-decoration-none text-black"
                                 >
                                     Forgot Password?
@@ -113,15 +113,15 @@ export default function Login({ status, canResetPassword }) {
                         <Button
                             className="button-primary rounded-2 w-100"
                             processing={processing}
-                            style={{ borderRadius: "8px" }}
+                            style={{ borderRadius: '8px' }}
                         >
                             Login
                         </Button>
                     </form>
                     <span className="text-black-50">
-                        Not Registered Yet?{" "}
+                        Not Registered Yet?{' '}
                         <Link
-                            href={"/register"}
+                            href={'/register'}
                             className="text-black text-decoration-none"
                         >
                             Create an account
