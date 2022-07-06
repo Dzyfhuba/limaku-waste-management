@@ -38,12 +38,12 @@ export default function NavBar({ ...props }) {
                             padding: '10px',
                         }}
                     >
-                        <span className="username">
+                        <span className="username dark:text-neutral-100">
                             {props.auth.user == undefined
                                 ? ''
                                 : props.auth.user.name}
                         </span>
-                        <span className="material-symbols-outlined ms-2 d-lg-block d-none">
+                        <span className="material-symbols-outlined ms-2 d-lg-block d-none dark:text-neutral-100">
                             account_circle
                         </span>
                     </Button>
@@ -71,18 +71,18 @@ export default function NavBar({ ...props }) {
 
     return (
         <nav
-            className="navbar navbar-light"
+            className="flex justify-between w-100 md:px-5 py-1 bg-neutral-100 dark:bg-neutral-700"
             style={{ position: 'fixed', zIndex: 99999 }}
         >
-            <NavBrand href={undefined}>LIMAKU</NavBrand>
+            <NavBrand href={'/'}>LIMAKU</NavBrand>
             <div className="d-lg-flex d-none" id="navList">
-                <NavLink href="/" active={undefined}>
+                <NavLink href="/" active={undefined} className={'dark:text-neutral-100'}>
                     Dashboard
                 </NavLink>
-                <NavLink href="/exchange" active={undefined}>
+                <NavLink href="/exchange" active={undefined} className={'dark:text-neutral-100'}>
                     Tukar Tunai
                 </NavLink>
-                <NavLink href="/about" active={undefined}>
+                <NavLink href="/about" active={undefined} className={'dark:text-neutral-100'}>
                     Tentang Kami
                 </NavLink>
 

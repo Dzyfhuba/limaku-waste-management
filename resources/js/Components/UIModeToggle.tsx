@@ -11,8 +11,8 @@ function ModeToggle(...props) {
 
     const styles = {
         position: 'fixed',
-        bottom: '0px',
-        right: '0px',
+        bottom: '10px',
+        right: '10px',
     };
 
     const handleOnClick = () => {
@@ -26,8 +26,9 @@ function ModeToggle(...props) {
             styles={styles}
             processing={undefined}
             onClick={handleOnClick}
+            className={'dark:text-neutral-100'}
         >
-            <span className="material-symbols-outlined">{icon}</span>;
+            <span className="material-symbols-outlined">{icon}</span>
         </Button>
     );
 }

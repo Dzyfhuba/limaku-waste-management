@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 /** @type {import('tailwindcss').Config} */
@@ -7,6 +8,7 @@ module.exports = {
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
         './resources/js/**/*.jsx',
+        './resources/js/**/*.tsx',
     ],
 
     theme: {
@@ -16,6 +18,7 @@ module.exports = {
             },
         },
     },
+    darkMode: 'class',
 
     plugins: [require('@tailwindcss/forms')],
 };

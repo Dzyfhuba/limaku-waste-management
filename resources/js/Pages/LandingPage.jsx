@@ -15,7 +15,7 @@ export default function LandingPage(props) {
             <main>
                 <article className="jumbotron">
                     <div className="container">
-                        <h1 className="fw-bolder">
+                        <h1 className="font-black text-5xl dark:text-neutral-100">
                             <div className="">
                                 <span>Selamat Datang</span>
                             </div>
@@ -23,7 +23,7 @@ export default function LandingPage(props) {
                                 <span>Di Limaku</span>
                             </div>
                         </h1>
-                        <ButtonAnchor href={props.auth ? '/#pickup' : '/login'}>
+                        <ButtonAnchor href={props.auth ? '/#pickup' : '/login'} className={'dark:bg-white dark:text-black'}>
                             Let`s Get Started
                         </ButtonAnchor>
                     </div>

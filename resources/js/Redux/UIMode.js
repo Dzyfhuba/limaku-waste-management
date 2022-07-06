@@ -17,10 +17,10 @@ const modeReducer = (state = initialState, action) => {
 const store = createStore(modeReducer);
 
 store.subscribe(() => {
-    const main = document.querySelector('main');
+    const html = document.querySelector('html');
     console.log(store.getState());
-    main.classList.toggle('dark', store.getState().mode == 'light');
-    main.classList.toggle('light', store.getState().mode == 'dark');
+    html.classList.toggle('dark', store.getState().mode == 'light');
+    html.classList.toggle('light', store.getState().mode == 'dark');
 });
 
 export default store;

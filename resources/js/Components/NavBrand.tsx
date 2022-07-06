@@ -1,15 +1,14 @@
 import React from 'react';
 import { Link } from '@inertiajs/inertia-react';
 
-export default function NavBrand({ href, children }) {
+export default function NavBrand(props) {
     const styles = {
-        color: '#484848',
         fontWeight: 'bolder',
         fontSize: '1.5rem',
     };
   return (
-    <Link href={href} className={'nav-link'} style={styles}>
-      {children}
+    <Link href={props.href} className={`dark:text-neutral-100 ${props.className}`} style={styles}>
+      {props.children}
     </Link>
   );
 }

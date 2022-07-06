@@ -10,7 +10,7 @@ const ButtonAnchor = ({
     children,
 }) => {
     return (
-        <Link role={role} href={href} className={className} style={style} method={method}>
+        <Link role={role} href={href} className={`bg-neutral-700 text-neutral-100 py-2.5 px-5 rounded-full ${ className }`} style={style} method={method}>
             {children}
         </Link>
     );
