@@ -7,7 +7,7 @@ import axios from 'axios';
 import swal from 'sweetalert';
 
 export default function LandingPage(props) {
-    const [reward, setReward] = useState(Number)
+    const [deposit, setDeposit] = useState(Number)
     const [name, setName] = useState(String);
     const [bank, setBank] = useState(String);
     const [account, setAccount] = useState(String);
@@ -15,7 +15,7 @@ export default function LandingPage(props) {
     const [token, setToken] = useState(String);
 
     useEffect(() => {
-        axios.get('/exchange/reward').then(response => setReward(response.data.reward));
+        axios.get('/exchange/deposit').then(response => setDeposit(response.data.deposit));
         axios.get('/token').then(response => setToken(response.data));
     }, []);
 
@@ -39,11 +39,11 @@ export default function LandingPage(props) {
         })
         .then(response => {
             swal(response.data.message, '', response.data.status);
-                setDepositor('');
-                setType('');
-                setWeight('');
-                setLocation('');
-                setDisabled(true);
+                setDeposit(response.data.deposit);
+                setName('');
+                setBank('');
+                setAccount('');
+                setNominal('');
                 e.target.reset();
         }).catch(error => console.log(error));
     };
@@ -91,7 +91,7 @@ export default function LandingPage(props) {
                                 <div className="card-body">
                                     <h4 className="card-title fw-bolder">Total E-Money</h4>
                                     <hr />
-                                    <p className="card-text text-end fs-1 fw-bolder">Rp. {reward}</p>
+                                    <p className="card-text text-end fs-1 fw-bolder">{deposit}</p>
                                 </div>
                             </div>
                         </div>

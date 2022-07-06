@@ -62,7 +62,7 @@ Route::get('/exchange', function () {
 })->middleware('auth');
 
 Route::controller(ExchangeController::class)->group(function () {
-    Route::get('/exchange/reward', 'reward');
+    Route::get('/exchange/deposit', 'deposit');
     Route::post('/exchange', 'store');
 });
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreWasteRequest;
 use App\Http\Requests\UpdateWasteRequest;
+use App\Models\Account;
 use App\Models\Waste;
 use Illuminate\Support\Facades\Auth;
 
@@ -50,6 +51,11 @@ class WasteController extends Controller
             'weight' => $request->weight,
             'location' => $request->location,
         ]);
+
+        $account = Account::find(Auth::id());
+        $account->deposit = $account->deposit + $waste->weight * 7000;
+        $account->save();
+
         return response()->json([
             'error' => false,
             'status' => 'success',

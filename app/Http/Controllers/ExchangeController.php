@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreExchangeRequest;
 use App\Http\Requests\UpdateExchangeRequest;
+use App\Models\Account;
 use App\Models\Exchange;
 use App\Models\Waste;
 use Illuminate\Support\Facades\Auth;
@@ -21,12 +22,10 @@ class ExchangeController extends Controller
         //
     }
 
-    public function reward()
+    public function deposit()
     {
-        $reward = Waste::where('user_id', Auth::id())
-            ->select(DB::raw('SUM(weight)*1000 as reward'))
-            ->first();
-        return response()->json(array('reward' => $reward->reward));
+        $account = Account::find(Auth::id());
+        return response()->json(array('deposit' => rupiah(round($account->deposit, 2))));
     }
 
     /**
@@ -54,10 +53,16 @@ class ExchangeController extends Controller
             'account' => $request->account,
             'nominal' => $request->nominal
         ]);
+
+        $account = Account::find(Auth::id());
+        $account->deposit = $account->deposit - $request->nominal;
+        $account->save();
+
         return response()->json([
             'error' => false,
             'status' => 'success',
-            'message' => 'Store was successfully! Please wait for the response.'
+            'message' => 'Store was successfully! Please wait for the response.',
+            'deposit' => rupiah($account->deposit),
         ])->setStatusCode(201);
     }
 
