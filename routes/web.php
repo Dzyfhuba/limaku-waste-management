@@ -63,6 +63,7 @@ Route::get('/exchange', function () {
 
 Route::controller(ExchangeController::class)->group(function () {
     Route::get('/exchange/reward', 'reward');
+    Route::post('/exchange', 'store');
 });
 
 Route::get('/token', function () {

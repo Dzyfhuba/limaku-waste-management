@@ -9,20 +9,18 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     * @return void
      *
+     * @return void
      */
     public function up()
     {
-        Schema::create('wastes', function (Blueprint $table) {
+        Schema::create('exchanges', function (Blueprint $table) {
             $table->id();
-            $table->string('depositor');
             $table->foreignIdFor(User::class);
-            $table->string('service_type');
-            $table->string('type');
-            $table->double('weight');
-            $table->text('location');
-            $table->dateTime('collected_at')->nullable();
+            $table->string('name');
+            $table->string('bank');
+            $table->string('account');
+            $table->string('nominal');
             $table->timestamps();
         });
     }
@@ -34,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('wastes');
+        Schema::dropIfExists('exchanges');
     }
 };

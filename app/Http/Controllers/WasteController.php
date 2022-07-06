@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreWasteRequest;
 use App\Http\Requests\UpdateWasteRequest;
 use App\Models\Waste;
+use Illuminate\Support\Facades\Auth;
 
 class WasteController extends Controller
 {
@@ -41,7 +42,14 @@ class WasteController extends Controller
      */
     public function store(StoreWasteRequest $request)
     {
-        $waste = Waste::create($request->all());
+        $waste = Waste::create([
+            'depositor' => $request->depositor,
+            'user_id' => Auth::id(),
+            'service_type' => $request->service_type,
+            'type' => $request->type,
+            'weight' => $request->weight,
+            'location' => $request->location,
+        ]);
         return response()->json([
             'error' => false,
             'status' => 'success',

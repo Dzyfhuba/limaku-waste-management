@@ -4,14 +4,49 @@ import { Head } from '@inertiajs/inertia-react';
 import NavBar from '@/Containers/NavBar';
 import Footer from '@/Containers/Footer';
 import axios from 'axios';
+import swal from 'sweetalert';
 
 export default function LandingPage(props) {
     const [reward, setReward] = useState(Number)
+    const [name, setName] = useState(String);
+    const [bank, setBank] = useState(String);
+    const [account, setAccount] = useState(String);
+    const [nominal, setNominal] = useState(Number);
+    const [token, setToken] = useState(String);
 
     useEffect(() => {
         axios.get('/exchange/reward').then(response => setReward(response.data.reward));
+        axios.get('/token').then(response => setToken(response.data));
     }, []);
 
+    const handleNameChange = (event) => setName(event.target.value);
+    const handleBankChange = (event) => setBank(event.target.value);
+    const handleAccountChange = (event) => setAccount(event.target.value);
+    const handleNominalChange = (event) => setNominal(event.target.value);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const data = {
+            // _token: token,
+            name,
+            bank,
+            account,
+            nominal
+        };
+        console.log(data);
+        axios.post('/exchange', data, {
+            headers: {'X-CSRF-TOKEN': token}
+        })
+        .then(response => {
+            swal(response.data.message, '', response.data.status);
+                setDepositor('');
+                setType('');
+                setWeight('');
+                setLocation('');
+                setDisabled(true);
+                e.target.reset();
+        }).catch(error => console.log(error));
+    };
     return (
         <Guest>
             <Head title='Tarik Uang'></Head>
@@ -28,22 +63,22 @@ export default function LandingPage(props) {
                             <div className="row">
                                 <div className="card shadow">
                                     <div className="card-body">
-                                        <form method="post">
+                                        <form onSubmit={handleSubmit}>
                                             <div className="mb-3">
                                               <label htmlFor="name" className="form-label">Nama Lengkap</label>
-                                              <input type="text" name="name" id="name" className="form-control" placeholder="Nama Lengkap" placeholderaria-describedby="nameId"></input>
+                                              <input type="text" name="name" id="name" className="form-control" placeholder="Nama Lengkap" placeholderaria-describedby="nameId" onChange={handleNameChange}></input>
                                             </div>
                                             <div className="mb-3">
                                               <label htmlFor="bank" className="form-label">Bank</label>
-                                              <input type="text" name="bank" id="bank" className="form-control" placeholder="Bank" placeholderaria-describedby="nameId"></input>
+                                              <input type="text" name="bank" id="bank" className="form-control" placeholder="Bank" placeholderaria-describedby="nameId" onChange={handleBankChange}></input>
                                             </div>
                                             <div className="mb-3">
                                               <label htmlFor="account" className="form-label">No. Rekening</label>
-                                              <input type="text" name="account" id="account" className="form-control" placeholder="No. Rekening" placeholderaria-describedby="nameId"></input>
+                                              <input type="text" name="account" id="account" className="form-control" placeholder="No. Rekening" placeholderaria-describedby="nameId" onChange={handleAccountChange}></input>
                                             </div>
                                             <div className="mb-3">
                                               <label htmlFor="nominal" className="form-label">Nominal Penarikan (Min. Rp. 10.000)</label>
-                                              <input type="text" name="nominal" id="nominal" className="form-control" placeholder="Nominal Penarikan (Min. Rp. 10.000)" placeholderaria-describedby="nameId"></input>
+                                              <input type="number" name="nominal" id="nominal" className="form-control" placeholder="Nominal Penarikan (Min. Rp. 10.000)" placeholderaria-describedby="nameId" onChange={handleNominalChange}></input>
                                             </div>
                                             <button type="submit" className="btn button-primary w-100">Kirim</button>
                                         </form>
