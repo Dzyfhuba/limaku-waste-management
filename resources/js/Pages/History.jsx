@@ -4,7 +4,6 @@ import NavBar from '@/Containers/NavBar';
 import Footer from '@/Containers/Footer';
 import { Head } from '@inertiajs/inertia-react';
 import List from '@/Components/List';
-import moment from 'moment';
 import axios from 'axios';
 
 export default function History(props) {

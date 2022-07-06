@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ExchangeController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\WasteController;
 use Illuminate\Foundation\Application;
@@ -54,6 +55,14 @@ Route::get('/history', function () {
 })->middleware('auth');
 Route::controller(HistoryController::class)->group(function () {
     Route::get('/history/get', 'index');
+});
+
+Route::get('/exchange', function () {
+    return Inertia::render('Exchange');
+})->middleware('auth');
+
+Route::controller(ExchangeController::class)->group(function () {
+    Route::get('/exchange/reward', 'reward');
 });
 
 Route::get('/token', function () {
