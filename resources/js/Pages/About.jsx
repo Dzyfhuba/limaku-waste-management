@@ -4,7 +4,7 @@ import NavBar from '@/Containers/NavBar';
 import Footer from '@/Containers/Footer';
 import { Head } from '@inertiajs/inertia-react';
 
-export default function LandingPage(props) {
+export default function About(props) {
     return (
         <Guest>
             <Head title='About Us'></Head>
