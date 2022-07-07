@@ -11,7 +11,7 @@ export default function Button({
     return (
         <button
             type={type}
-            className={className}
+            className={`py-2.5 px-5 bg-neutral-700 text-neutral-100 dark:bg-neutral-100 dark:text-neutral-700 rounded-full ${className}`}
             onClick={onClick}
             disabled={processing}
             style={styles}

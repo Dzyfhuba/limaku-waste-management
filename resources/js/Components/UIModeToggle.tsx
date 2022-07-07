@@ -26,7 +26,7 @@ function ModeToggle(...props) {
             styles={styles}
             processing={undefined}
             onClick={handleOnClick}
-            className={'dark:text-neutral-100'}
+            className={'py-0 px-0'}
         >
             <span className="material-symbols-outlined">{icon}</span>
         </Button>

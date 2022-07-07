@@ -18,7 +18,7 @@ export default function NavBar({ ...props }) {
         }
     });
     const login = (
-        <Link href={route('login')} className="navigation-link">
+        <Link href={route('login')} className="bg-neutral-700 text-neutral-100 h-full py-2.5 px-5 rounded-full dark:bg-neutral-100 dark:text-neutral-700">
             Login
         </Link>
     );

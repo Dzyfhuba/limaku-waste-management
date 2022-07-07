@@ -1,3 +1,4 @@
+import Button from '@/Components/Button';
 import axios from 'axios';
 import { capitalize } from 'lodash';
 import React, { useEffect, useState } from 'react';
@@ -51,11 +52,11 @@ export default function Waste() {
 
     return (
         <div
-            className="container d-flex justify-content-center flex-column"
+            className="container d-flex justify-content-center flex-column text-neutral-700 dark:text-neutral-100"
             style={{ minHeight: '100vh' }}
             id="pickup"
         >
-            <h1 className="text-center fw-bolder">Pickup</h1>
+            <h1 className="text-center fw-bolder font-black text-5xl">Pickup</h1>
             <form onSubmit={handleSubmit} onChange={handleFormChange}>
                 <div className="mb-3">
                     <label htmlFor="depositor" className="form-label">
@@ -128,14 +129,11 @@ export default function Waste() {
                     ></textarea>
                 </div>
                 <div className="d-flex justify-content-end">
-                    <button
+                    <Button
                         type="submit"
-                        className={`btn button-submit${
-                            disabled ? ' disabled' : ''
-                        }`}
-                    >
+                        className={`${disabled ? ' disabled' : ''}`} styles={undefined} processing={undefined} onClick={undefined} >
                         Konfirmasi
-                    </button>
+                    </Button>
                 </div>
             </form>
         </div>

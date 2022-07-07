@@ -1,3 +1,4 @@
+import Button from '@/Components/Button';
 import axios from 'axios';
 import { capitalize } from 'lodash';
 import React, { useEffect, useState } from 'react';
@@ -51,7 +52,7 @@ export default function Waste() {
 
     return (
         <div
-            className="container d-flex justify-content-center flex-column"
+            className="container d-flex justify-content-center flex-column text-neutral-700 dark:text-neutral-100"
             style={{ minHeight: '100vh' }}
             id="dropoff"
         >
@@ -127,14 +128,11 @@ export default function Waste() {
                     ></textarea>
                 </div>
                 <div className="d-flex justify-content-end">
-                    <button
+                    <Button
                         type="submit"
-                        className={`btn button-submit${
-                            disabled ? ' disabled' : ''
-                        }`}
-                    >
+                        className={`${disabled ? ' disabled' : ''}`} styles={undefined} processing={undefined} onClick={undefined}>
                         Konfirmasi
-                    </button>
+                    </Button>
                 </div>
             </form>
         </div>
