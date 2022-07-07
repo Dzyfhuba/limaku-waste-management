@@ -18,9 +18,9 @@ const store = createStore(modeReducer);
 
 store.subscribe(() => {
     const html = document.querySelector('html');
-    console.log(store.getState());
+    // console.log(store.getState());
     html.classList.toggle('dark', store.getState().mode == 'light');
-    html.classList.toggle('light', store.getState().mode == 'dark');
+    // html.classList.toggle('light', store.getState().mode == 'dark');
 });
 
 const trigger = () => {

@@ -2,6 +2,7 @@
 // import UIMode from '../Redux/UIMode';
 // const UIMode = require('../resources/js/Redux/UIMode');
 const UIMode = require('../Redux/UIModeES5');
+// const UIMode = require('../Redux/UIMode');
 
 test('UI Mode Toggle: Redux', () => {
     UIMode.dispatch({ type: 'FLIP'});

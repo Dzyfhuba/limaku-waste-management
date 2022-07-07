@@ -27,7 +27,7 @@ export default function NavBar({ ...props }) {
         <Dropdown className="w-100">
             <Dropdown.Trigger>
                 <span
-                    className="inline-flex w-100 rounded-lg justify-content-center"
+                    className=" -100 rounded-lg justify-content-center"
                     style={{ display: 'inline-flex' }}
                 >
                     <Button
