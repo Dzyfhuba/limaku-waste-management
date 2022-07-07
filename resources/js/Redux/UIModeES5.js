@@ -1,5 +1,6 @@
-// const { createStore } = require('@reduxjs/toolkit');
-import { legacy_createStore as createStore } from '@reduxjs/toolkit';
+/* eslint-disable @typescript-eslint/no-var-requires */
+const { createStore } = require('@reduxjs/toolkit');
+// import { legacy_createStore as createStore } from '@reduxjs/toolkit';
 
 const initialState = {
     mode: 'dark',
@@ -17,10 +18,10 @@ const modeReducer = (state = initialState, action) => {
 const store = createStore(modeReducer);
 
 store.subscribe(() => {
-    const html = document.querySelector('html');
+    // const html = document.querySelector('html');
     console.log(store.getState());
-    html.classList.toggle('dark', store.getState().mode == 'light');
-    html.classList.toggle('light', store.getState().mode == 'dark');
+    // html.classList.toggle('dark', store.getState().mode == 'light');
+    // html.classList.toggle('light', store.getState().mode == 'dark');
 });
 
 const trigger = () => {
@@ -29,4 +30,4 @@ const trigger = () => {
 }
 store.trigger = trigger;
 
-export default store;
+module.exports = store;
