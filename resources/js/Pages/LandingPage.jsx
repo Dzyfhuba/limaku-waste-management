@@ -23,7 +23,7 @@ export default function LandingPage(props) {
                                 <span>Di Limaku</span>
                             </div>
                         </h1>
-                        <ButtonAnchor href={props.auth ? '/#pickup' : '/login'} className={'dark:bg-white dark:text-black'}>
+                        <ButtonAnchor href={props.auth ? '/#pickup' : '/login'}>
                             Let`s Get Started
                         </ButtonAnchor>
                     </div>
