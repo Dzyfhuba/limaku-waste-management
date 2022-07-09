@@ -16,7 +16,7 @@ class HistoryController extends Controller
      */
     public function index()
     {
-        $histories = Waste::where('user_id', '=', Auth::id())->get();
+        $histories = Waste::where('user_id', '=', Auth::id())->orderBy('id', 'desc')->get();
         return response()->json(array('histories' => $histories));
     }
 

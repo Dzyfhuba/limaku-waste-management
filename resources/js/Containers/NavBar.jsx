@@ -20,23 +20,16 @@ export default function NavBar({ ...props }) {
         }
     });
     const login = (
-        <Link
-            href={route('login')}
-            className="bg-neutral-700 text-neutral-100 border-2
-        dark:bg-neutral-100 dark:text-neutral-700 dark:border-neutral-700
-        hover:bg-neutral-100 hover:text-neutral-700 hover:border-neutral-700
-        hover:dark:bg-neutral-700 hover:dark:text-neutral-100 hover:dark:border-neutral-100
-        py-2.5 px-5 rounded-full"
-        >
+        <ButtonAnchor href={route('login')}>
             Login
-        </Link>
+        </ButtonAnchor>
     );
 
     const profile = (
         <Dropdown className="w-100">
             <Dropdown.Trigger>
                 <span
-                    className="inline-flex w-100 rounded-lg justify-content-center"
+                    className=" -100 rounded-lg justify-content-center"
                     style={{ display: 'inline-flex' }}
                 >
                     <Button

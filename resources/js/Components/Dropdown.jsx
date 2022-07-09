@@ -87,7 +87,6 @@ const DropdownLink = ({ href, method = 'get', as = 'a', children }) => {
     const styles = {
         width: '186px',
         height: '46px',
-        color: 'rgb(72, 72, 72)',
         padding: '10px',
     };
     return (
