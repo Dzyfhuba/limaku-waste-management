@@ -5,6 +5,7 @@ import NavBar from '@/Containers/NavBar';
 import Footer from '@/Containers/Footer';
 import axios from 'axios';
 import swal from 'sweetalert';
+import Button from '@/Components/Button';
 
 export default function LandingPage(props) {
     const [deposit, setDeposit] = useState(Number)
@@ -56,7 +57,7 @@ export default function LandingPage(props) {
                     <div className="row justify-content-between">
                         <div className="col-md-5 mb-4" tabIndex={2}>
                             <div className="row">
-                                <h1 className='fw-bolder text-black-50' style={{ fontSize: '60px' }}>
+                                <h1 className='fw-bolder text-neutral-400 dark:text-neutral-200' style={{ fontSize: '60px' }}>
                                     Penarikan Tunai
                                 </h1>
                             </div>
@@ -80,7 +81,7 @@ export default function LandingPage(props) {
                                               <label htmlFor="nominal" className="form-label">Nominal Penarikan (Min. Rp. 10.000)</label>
                                               <input type="number" name="nominal" id="nominal" className="form-control" placeholder="Nominal Penarikan (Min. Rp. 10.000)" placeholderaria-describedby="nameId" onChange={handleNominalChange}></input>
                                             </div>
-                                            <button type="submit" className="btn button-primary w-100">Kirim</button>
+                                            <Button type="submit" className={'w-full'}>Kirim</Button>
                                         </form>
                                     </div>
                                 </div>

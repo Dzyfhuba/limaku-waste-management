@@ -14,17 +14,20 @@ export default function NavBar({ ...props }) {
 
     useEffect(() => {
         axios.get('/auth/check').then((response) => setAuth(response.data));
-        axios.get('/app.name').then(response => setAppName(response.data));
+        axios.get('/app.name').then((response) => setAppName(response.data));
         if (auth) {
             setProfileAvailable(true);
         }
     });
     const login = (
-        <Link href={route('login')} className="bg-neutral-700 text-neutral-100 border-2
+        <Link
+            href={route('login')}
+            className="bg-neutral-700 text-neutral-100 border-2
         dark:bg-neutral-100 dark:text-neutral-700 dark:border-neutral-700
         hover:bg-neutral-100 hover:text-neutral-700 hover:border-neutral-700
         hover:dark:bg-neutral-700 hover:dark:text-neutral-100 hover:dark:border-neutral-100
-        py-2.5 px-5 rounded-full">
+        py-2.5 px-5 rounded-full"
+        >
             Login
         </Link>
     );
@@ -77,36 +80,49 @@ export default function NavBar({ ...props }) {
 
     return (
         <nav
-            className="flex justify-between w-100 md:px-5 py-1 bg-neutral-100 dark:bg-neutral-700"
+            className="flex justify-between w-100 md:px-5 py-1 bg-neutral-100 dark:bg-neutral-700
+            shadow"
             style={{ position: 'fixed', zIndex: 99999 }}
         >
             <NavBrand href={'/'}>{appName}</NavBrand>
             <div className="d-lg-flex d-none" id="navList">
-                <NavLink href="/" active={undefined} className={'dark:text-neutral-100'}>
+                <NavLink
+                    href="/"
+                    active={undefined}
+                    className={'dark:text-neutral-100'}
+                >
                     Dashboard
                 </NavLink>
-                <NavLink href="/exchange" active={undefined} className={'dark:text-neutral-100'}>
+                <NavLink
+                    href="/exchange"
+                    active={undefined}
+                    className={'dark:text-neutral-100'}
+                >
                     Tukar Tunai
                 </NavLink>
-                <NavLink href="/about" active={undefined} className={'dark:text-neutral-100'}>
+                <NavLink
+                    href="/about"
+                    active={undefined}
+                    className={'dark:text-neutral-100'}
+                >
                     Tentang Kami
                 </NavLink>
 
                 {auth ? profile : login}
             </div>
             <button
-                className="btn d-lg-none"
+                className="btn d-lg-none
+                dark:bg-neutral-700 dark:text-neutral-100
+                hover:dark:bg-neutral-100 hover:dark:text-neutral-700
+                bg-neutral-100 hover:bg-neutral-700 hover:text-neutral-100
+                active:shadow-none
+                flex align-middle"
                 type="button"
                 data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasRight"
                 aria-controls="offcanvasRight"
             >
-                <span
-                    className="material-symbols-outlined"
-                    style={{ color: '#484848' }}
-                >
-                    menu
-                </span>
+                <span className="material-symbols-outlined">menu</span>
             </button>
 
             <div
@@ -120,33 +136,49 @@ export default function NavBar({ ...props }) {
                     <h5 id="offcanvasRightLabel"></h5>
                     <button
                         type="button"
-                        className="btn-close text-reset"
+                        className="
+                        flex align-middle"
                         data-bs-dismiss="offcanvas"
                         aria-label="Close"
-                    ></button>
+                    >
+                    <span className="material-symbols-outlined">
+                        close
+                    </span>
+                    </button>
                 </div>
-                <div className="offcanvas-body">
-                    {auth ? '':
-                    <NavLink
-                        className="w-100 button-primary text-white"
-                        href={route('login')}
+                <div className="offcanvas-body flex flex-col">
+                    {auth ? (
+                        ''
+                    ) : (
+                        <ButtonAnchor
+                            className="w-100 button-primary text-center h-10 flex align-items-center justify-center"
+                            href={route('login')}
+                            active={undefined}
+                        >
+                            Login
+                        </ButtonAnchor>
+                    )}
+                    <Link
+                        className="w-100 text-center h-10 flex align-items-center justify-center hover:shadow-lg hover:rounded-full hover:text-black"
+                        href="/"
                         active={undefined}
                     >
-                        Login
-                    </NavLink>}
-                    <NavLink className="w-100" href="/" active={undefined}>
                         Dashboard
-                    </NavLink>
-                    <NavLink
-                        className="w-100"
+                    </Link>
+                    <Link
+                        className="w-100 text-center h-10 flex align-items-center justify-center hover:shadow-lg hover:rounded-full hover:text-black"
                         href="/exchange"
                         active={undefined}
                     >
                         Tukar Tunai
-                    </NavLink>
-                    <NavLink className="w-100" href="/about" active={undefined}>
+                    </Link>
+                    <Link
+                        className="w-100 text-center h-10 flex align-items-center justify-center hover:shadow-lg hover:rounded-full hover:text-black"
+                        href="/about"
+                        active={undefined}
+                    >
                         Tentang Kami
-                    </NavLink>
+                    </Link>
                     {auth ? (
                         <>
                             <a
@@ -169,25 +201,25 @@ export default function NavBar({ ...props }) {
                                 </span>
                             </a>
                             <div className="collapse" id="profileCollapse">
-                                <ButtonAnchor
+                                <Link
                                     href={'profile'}
                                     as="button"
-                                    className="w-100 btn"
+                                    className="w-100 text-center h-10 flex align-items-center justify-center hover:shadow-lg hover:rounded-full hover:text-black"
                                 >
                                     Profile
-                                </ButtonAnchor>
-                                <ButtonAnchor
+                                </Link>
+                                <Link
                                     href={'history'}
                                     as="button"
-                                    className="w-100 btn"
+                                    className="w-100 text-center h-10 flex align-items-center justify-center hover:shadow-lg hover:rounded-full hover:text-black"
                                 >
                                     History
-                                </ButtonAnchor>
+                                </Link>
                                 <Link
                                     href={route('logout')}
                                     method="post"
                                     as="button"
-                                    className="w-100 btn"
+                                    className="w-100 text-center h-10 flex align-items-center justify-center hover:shadow-lg hover:rounded-full hover:text-black"
                                     onClick={() => setAuth(false)}
                                 >
                                     Log Out

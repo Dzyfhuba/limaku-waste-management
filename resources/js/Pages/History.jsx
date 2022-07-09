@@ -19,22 +19,23 @@ export default function History(props) {
             <NavBar auth={props.auth}></NavBar>
             <main>
                 <div className="container">
-                    <h1 className="mb-3">Riwayat Transaksi</h1>
+                    <h1 className="mb-3 text-6xl dark:text-neutral-100">Riwayat Transaksi</h1>
                     <List>
                         {histories.map((e, index) => {
                             return(
-                                <List.Item className="card card-body mb-2" key={index}>
+                                <List.Item className="dark:bg-neutral-700 dark:text-neutral-100
+                                shadow mb-3 p-3" key={index}>
                                     <div className="row align-items-center">
                                         <div className="col mb-sm-0 mb-3">
                                             <h4>{e.type}</h4>
-                                            <small className="text-sm text-black-50">
+                                            <small className="text-sm text-neutral-400 dark:text-neutral-400">
                                                 {e.created_at}
                                             </small>
                                         </div>
                                         <div className="col size-sm-big text-sm-center text-end">
                                             {e.weight} kg
                                         </div>
-                                        <div className="col-sm size-sm-big d-flex justify-content-end">
+                                        <div className="col-sm size-sm-big d-flex justify-content-end ">
                                             Rp. {e.weight * 1000}
                                         </div>
                                     </div>
