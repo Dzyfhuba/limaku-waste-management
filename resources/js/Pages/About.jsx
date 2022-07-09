@@ -10,9 +10,9 @@ export default function About(props) {
             <Head title='About Us'></Head>
             <NavBar auth={props.auth}></NavBar>
             <main>
-                <div className="container">
+                <div className="container dark:text-neutral-100">
                     <article className="jumbotron flex-column justify-content-center text-center">
-                        <h1 className="fw-bolder">Tentang Kami</h1>
+                        <h1 className="fw-bolder text-6xl">Tentang Kami</h1>
                         <p>
                             LIMAKU adalah website waste management. Disini kami
                             menyediakan tempat untuk masyarakat menukarkan

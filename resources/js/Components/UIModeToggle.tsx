@@ -21,15 +21,12 @@ function ModeToggle(...props) {
     };
 
     return (
-        <Button
-            type="button"
-            styles={styles}
-            processing={undefined}
+        <button
             onClick={handleOnClick}
-            className={'py-0 px-0'}
+            className={'py-0 px-0 fixed bottom-5 right-5 w-5 h-5 dark:text-neutral-100 flex items-center active:animate-bounce transition-opacity'}
         >
             <span className="material-symbols-outlined">{icon}</span>
-        </Button>
+        </button>
     );
 }
 

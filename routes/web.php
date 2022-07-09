@@ -35,6 +35,10 @@ Route::get('/', function () {
     // return Inertia::render('Dashboard');
 })->name('dashboard');
 
+Route::get('/app.name', function () {
+    return config('app.name');
+});
+
 Route::get('/about', function () {
     return Inertia::render('About');
 });

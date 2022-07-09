@@ -10,7 +10,7 @@ function List(props) {
 
 function Item(props) {
     return (
-        <div className={`list-unstyled px-sm-2${' ' + props.className}`}>
+        <div className={`px-sm-2${' ' + props.className}`}>
             {props.children}
         </div>
     );

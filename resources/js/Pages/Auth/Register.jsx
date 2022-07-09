@@ -49,7 +49,7 @@ export default function Register() {
                     className="col-md-6 p-5 text-center d-flex flex-column justify-content-between bg-white"
                     style={{ height: '80%' }}
                 >
-                    <h1>Login to your account</h1>
+                    <h1 className='font-black text-5xl'>Create Your Account</h1>
                     <form onSubmit={submit} className="text-start">
                         <div>
                             <Label forInput="name" value="Name" />

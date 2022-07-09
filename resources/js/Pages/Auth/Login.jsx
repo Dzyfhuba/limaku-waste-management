@@ -6,7 +6,6 @@ import Input from '@/Components/Input';
 import Label from '@/Components/Label';
 import ValidationErrors from '@/Components/ValidationErrors';
 import { Head, Link, useForm } from '@inertiajs/inertia-react';
-import ButtonAnchor from '@/Components/ButtonAnchor';
 
 export default function Login({ status, canResetPassword }) {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -57,7 +56,7 @@ export default function Login({ status, canResetPassword }) {
                     className="col-md-6 p-5 text-center d-flex flex-column justify-content-between bg-white"
                     style={{ height: '80%' }}
                 >
-                    <h1>Login to your account</h1>
+                    <h1 className='text-5xl font-black'>Login to your account</h1>
 
                     <form onSubmit={submit} className="text-start">
                         <div>
@@ -111,7 +110,7 @@ export default function Login({ status, canResetPassword }) {
                             )}
                         </div>
                         <Button
-                            className="button-primary rounded-2 w-100"
+                            className="rounded-2 w-100"
                             processing={processing}
                             style={{ borderRadius: '8px' }}
                         >

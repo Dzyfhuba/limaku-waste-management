@@ -4,7 +4,7 @@ import * as React from 'react';
 class Footer extends React.Component {
     render() {
         return (
-            <footer style={{ backgroundColor: '#EFF0F2' }}>
+            <footer className='dark:text-neutral-100'>
                 <div className="container py-5">
                     <div className="row justify-content-between">
                         <div className="col-md-5">
@@ -27,16 +27,16 @@ class Footer extends React.Component {
                                 <p>Location: DKI JAKARTA. INDONESIA</p>
                                 <div className="social-links d-flex justify-content-evenly">
                                     <Link href="#">
-                                        <i className="bi bi-facebook fs-2 text-black"></i>
+                                        <i className="bi bi-facebook fs-2 font-black"></i>
                                     </Link>
                                     <Link href="#">
-                                        <i className="bi bi-twitter fs-2 text-black"></i>
+                                        <i className="bi bi-twitter fs-2 font-black"></i>
                                     </Link>
                                     <Link href="#">
-                                        <i className="bi bi-instagram fs-2 text-black"></i>
+                                        <i className="bi bi-instagram fs-2 font-black"></i>
                                     </Link>
                                     <Link href="#">
-                                        <i className="bi bi-linkedin fs-2 text-black"></i>
+                                        <i className="bi bi-linkedin fs-2 font-black"></i>
                                     </Link>
                                 </div>
                             </section>
