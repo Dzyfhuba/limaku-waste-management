@@ -10,15 +10,21 @@ import React, { useEffect, useState } from 'react';
 export default function NavBar({ ...props }) {
     const [auth, setAuth] = useState(false);
     const [profileAvailable, setProfileAvailable] = useState(true);
+    const [appName, setAppName] = useState(String);
 
     useEffect(() => {
         axios.get('/auth/check').then((response) => setAuth(response.data));
+        axios.get('/app.name').then(response => setAppName(response.data));
         if (auth) {
             setProfileAvailable(true);
         }
     });
     const login = (
-        <Link href={route('login')} className="bg-neutral-700 text-neutral-100 h-full py-2.5 px-5 rounded-full dark:bg-neutral-100 dark:text-neutral-700">
+        <Link href={route('login')} className="bg-neutral-700 text-neutral-100 border-2
+        dark:bg-neutral-100 dark:text-neutral-700 dark:border-neutral-700
+        hover:bg-neutral-100 hover:text-neutral-700 hover:border-neutral-700
+        hover:dark:bg-neutral-700 hover:dark:text-neutral-100 hover:dark:border-neutral-100
+        py-2.5 px-5 rounded-full">
             Login
         </Link>
     );
@@ -74,7 +80,7 @@ export default function NavBar({ ...props }) {
             className="flex justify-between w-100 md:px-5 py-1 bg-neutral-100 dark:bg-neutral-700"
             style={{ position: 'fixed', zIndex: 99999 }}
         >
-            <NavBrand href={'/'}>LIMAKU</NavBrand>
+            <NavBrand href={'/'}>{appName}</NavBrand>
             <div className="d-lg-flex d-none" id="navList">
                 <NavLink href="/" active={undefined} className={'dark:text-neutral-100'}>
                     Dashboard

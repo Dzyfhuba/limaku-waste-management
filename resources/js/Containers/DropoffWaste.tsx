@@ -56,7 +56,7 @@ export default function Waste() {
             style={{ minHeight: '100vh' }}
             id="dropoff"
         >
-            <h1 className="text-center fw-bolder">Dropoff</h1>
+            <h1 className="text-center fw-bolder font-black text-5xl">Dropoff</h1>
             <form onSubmit={handleSubmit} onChange={handleFormChange}>
                 <div className="mb-3">
                     <label htmlFor="depositor" className="form-label">
