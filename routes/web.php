@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ExchangeController;
 use App\Http\Controllers\HistoryController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WasteController;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
@@ -51,6 +52,10 @@ Route::get('/isverified', function (Request $request) {
     return $isVerified;
 })->middleware('auth');
 
+Route::get('/token', function () {
+    return csrf_token();
+});
+
 Route::get('/about', function () {
     return Inertia::render('About');
 });
@@ -77,8 +82,11 @@ Route::controller(ExchangeController::class)->group(function () {
     Route::post('/exchange', 'store');
 });
 
-Route::get('/token', function () {
-    return csrf_token();
+Route::controller(ProfileController::class)->middleware('auth')->group(function () {
+    Route::get('/profile', function () {
+        return Inertia::render('Profile');
+    });
+    Route::get('/profile/get', 'index');
 });
 
 require __DIR__ . '/auth.php';

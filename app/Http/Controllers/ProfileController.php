@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreProfileRequest;
 use App\Http\Requests\UpdateProfileRequest;
 use App\Models\Profile;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -15,7 +16,10 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        //
+        $profile = Profile::find(Auth::id());
+        return response()->json([
+            'profile' => $profile
+        ]);
     }
 
     /**
