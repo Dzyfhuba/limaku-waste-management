@@ -108,6 +108,7 @@ export default function NavBar({ ...props }) {
                 dark:bg-neutral-700 dark:text-neutral-100
                 hover:dark:bg-neutral-100 hover:dark:text-neutral-700
                 bg-neutral-100 hover:bg-neutral-700 hover:text-neutral-100
+                shadow-none
                 active:shadow-none
                 flex align-middle"
                 type="button"
@@ -175,7 +176,7 @@ export default function NavBar({ ...props }) {
                     {auth ? (
                         <>
                             <a
-                                className={`btn w-100 d-flex justify-content-center${
+                                className={`btn w-100 d-flex justify-content-center hover:shadow-lg rounded-full${
                                     profileAvailable ? '' : ' d-none'
                                 }`}
                                 data-bs-toggle="collapse"

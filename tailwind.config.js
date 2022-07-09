@@ -16,6 +16,16 @@ module.exports = {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
+            animation: {
+                fadeIn: 'fadeIn 5s ease-in-out',
+            },
+            keyframes: theme => ({
+                fadeIn: {
+                  '0%': { opacity: theme('opacity.0') },
+                  '100%': { opacity: theme('opacity.70') },
+                },
+              }),
+
         },
     },
     darkMode: 'class',

@@ -4,6 +4,7 @@ use App\Http\Controllers\ExchangeController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\WasteController;
 use Illuminate\Foundation\Application;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -39,13 +40,19 @@ Route::get('/app.name', function () {
     return config('app.name');
 });
 
-Route::get('/about', function () {
-    return Inertia::render('About');
-});
-
 Route::get('/auth/check', function () {
     $isAuth = Auth::check() ? true : false;
     return response()->json($isAuth);
+});
+
+Route::get('/isverified', function (Request $request) {
+    $user = Auth::user();
+    $isVerified = $request->user()->hasVerifiedEmail() ? true : false;
+    return $isVerified;
+})->middleware('auth');
+
+Route::get('/about', function () {
+    return Inertia::render('About');
 });
 
 Route::controller(WasteController::class)->group(function () {
