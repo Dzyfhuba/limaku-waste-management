@@ -22,11 +22,7 @@ export default function LandingPage(props) {
         });
     },[])
 
-    console.log('auth: ', auth);
-    console.log('verified?: ', verified);
-
     const handleHideVerification = (event) => {
-        console.log(event.target.parentNode.parentNode.parentNode)
         event.target.parentNode.parentNode.parentNode.classList.add('invisible');
 
         setTimeout(() => {

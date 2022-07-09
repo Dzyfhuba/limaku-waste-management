@@ -33,5 +33,6 @@ class DatabaseSeeder extends Seeder
         }
 
         Waste::factory(300)->create();
+        $this->call(ProfileSeeder::class);
     }
 }

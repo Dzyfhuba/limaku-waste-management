@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Account;
+use App\Models\Profile;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -50,6 +51,10 @@ class RegisteredUserController extends Controller
         Account::create([
             'user_id' => $user->id,
             'deposit' => 0,
+        ]);
+
+        Profile::create([
+            'user_id' => $user->id,
         ]);
 
         event(new Registered($user));
