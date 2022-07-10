@@ -74,7 +74,18 @@ class ProfileController extends Controller
      */
     public function update(UpdateProfileRequest $request, Profile $profile)
     {
-        //
+        // dd($request);
+        $profile->create([
+            'user_id' => Auth::id(),
+            'image' => $request->image,
+        ]);
+
+        // return response()->json([
+        //     'error' => false,
+        //     'message' => 'Success',
+        //     'request' => $request->ajax(),
+        // ]);
+        return json_encode($request->all());
     }
 
     /**

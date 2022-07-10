@@ -45,6 +45,8 @@
     "bootstrap-icons": "^1.8.3",
     "jquery": "^3.6.0",
     "moment": "^2.29.3",
+    "react-hook-form": "^7.33.1",
+    "smooth-zoom": "^1.2.2",
     "sweetalert": "^2.1.2"
   }
 }

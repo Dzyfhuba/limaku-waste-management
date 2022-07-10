@@ -87,6 +87,7 @@ Route::controller(ProfileController::class)->middleware('auth')->group(function 
         return Inertia::render('Profile');
     });
     Route::get('/profile/get', 'index');
+    Route::post('/profile/update', 'update');
 });
 
 require __DIR__ . '/auth.php';
