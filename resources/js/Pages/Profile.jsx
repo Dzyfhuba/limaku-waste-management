@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import { Head, useForm } from '@inertiajs/inertia-react';
 import NavBar from '@/Containers/NavBar';
-import ButtonAnchor from '@/Components/ButtonAnchor';
 import Footer from '@/Containers/Footer';
 import Guest from '@/Layouts/Guest';
-import Button from '@/Components/Button';
 import { useEffect } from 'react';
 import axios from 'axios';
-import zoom from 'smooth-zoom';
+import swal from 'sweetalert';
+import Fancybox from '@/Components/Fancybox';
 
 export default function Profile(props) {
     const [profile, setProfile] = useState({ image: '/image/profile.png' });
@@ -16,7 +15,7 @@ export default function Profile(props) {
     const [token, setToken] = useState(String);
 
     useEffect(() => {
-        axios.get('/token').then(response => setToken(response.data));
+        axios.get('/token').then((response) => setToken(response.data));
         axios.get('/profile/get').then((response) => {
             if (!response.data.profile.image) {
                 response.data.profile.image = '/image/profile.png';
@@ -24,20 +23,18 @@ export default function Profile(props) {
             setProfile(response.data.profile);
             setImageProfile(response.data.profile.image);
         });
-        zoom(document.querySelector('img'));
     }, []);
 
-    const handleSubmit =  async (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const data = {
             _method: 'put',
             _token: token,
-            image: event.target.querySelector('input').files[0]
-            // image: 'image',
-        }
+            image: event.target.querySelector('input').files[0],
+        };
 
         if (data.image == undefined) {
-            console.log('data image: undefined')
+            console.log('data image: undefined');
             return;
         }
         console.log(data);
@@ -46,41 +43,24 @@ export default function Profile(props) {
         formData.append('image', data.image);
         formData.append('_token', data._token);
 
-        // console.log(formData);
-        axios.post('/profile/update', formData, {
-            headers: {
-                'Content-Type': 'multipart/form-data',
-                'X-Requested-With': 'XMLHttpRequest',
-                'X-CSRF-TOKEN': token
-            }
-        }).then(response => console.log(response.data))
-
-        // const response = await fetch('/profile', {
-        //     method: 'PUT',
-        //     headers: {
-        //         'Content-Type': 'multipart/form-data',
-        //         'X-CSRF-TOKEN': token
-        //     },
-        //     body: data
-        // }).then(response => response.json());
-
-        // let response = '';
-        // try {
-        //     response = await axios({
-        //       method: 'put',
-        //       url: '/profile',
-        //       data: data,
-        //       headers: {
-        //             'Content-Type': 'multipart/form-data',
-        //             'X-Requested-With': 'XMLHttpRequest',
-        //             'X-CSRF-TOKEN': token
-        //         },
-        //     }).then(response => response.data)
-        // } catch(error) {
-        //     console.log(error)
-        // }
-
-        // console.log(response);
+        axios
+            .post(`/profile/${props.auth.user.id}`, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'X-CSRF-TOKEN': token,
+                },
+            })
+            .then((response) => {
+                swal('Success', response.data.message, 'success').then(() => {
+                    const modalElement = document.querySelector('.modal');
+                    modalElement
+                        .querySelector('[data-bs-dismiss="modal"]')
+                        .dispatchEvent(new Event('click'));
+                    console.log(response.data.data);
+                    setImageProfile(response.data.data);
+                });
+            });
     };
 
     return (
@@ -95,14 +75,17 @@ export default function Profile(props) {
                 </div>
                 <div className="lg:flex flex-row justify-around p-5">
                     <div className="w-2/5 mx-auto lg:mb-0 mb-5">
-                        <img
-                            src={imageProfile}
-                            alt={props.auth.user.name}
-                            className={
-                                'aspect-square rounded-full max-h-80 shadow-lg object-cover bg-center'
-                            }
-                        />
-                        {/* {image} */}
+                        <Fancybox>
+                            <a data-fancybox="gallery" href={imageProfile}>
+                                <img
+                                    src={imageProfile}
+                                    alt={props.auth.user.name}
+                                    className={
+                                        'aspect-square rounded-full max-h-80 shadow-lg object-cover bg-center'
+                                    }
+                                />
+                            </a>
+                        </Fancybox>
                     </div>
                     <div className="profile flex flex-col justify-evenly">
                         <h1 className="text-6xl font-black text-center dark:text-neutral-100">
@@ -167,7 +150,12 @@ export default function Profile(props) {
                                                 hover:file:bg-violet-100
                                                 "
                                                     name="image"
-                                                    onChange={ e => setData('image', e.target.value)}
+                                                    onChange={(e) =>
+                                                        setData(
+                                                            'image',
+                                                            e.target.value
+                                                        )
+                                                    }
                                                 />
                                             </label>
                                         </div>
