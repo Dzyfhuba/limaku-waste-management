@@ -7,6 +7,9 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import swal from 'sweetalert';
 import Fancybox from '@/Components/Fancybox';
+import Button from '@/Components/Button';
+import ButtonAnchor from '@/Components/ButtonAnchor';
+import ButtonMailto from '@/Components/ButtonMailTo';
 
 export default function Profile(props) {
     const [profile, setProfile] = useState({ image: '/image/profile.png' });
@@ -187,6 +190,22 @@ export default function Profile(props) {
                             </div>
                         </div>
                     </div>
+                </div>
+                <div className="lg:mx-44 mx-5">
+                    <ButtonAnchor className='w-full flex justify-between'>
+                        <span>Ubah Kata Sandi</span>
+                        <span className="material-symbols-outlined">
+                            lock_reset
+                        </span>
+                    </ButtonAnchor>
+                    <ButtonMailto className='w-full flex justify-between'
+                    mailto={'mailto:limaku5ku@gmail.com'}
+                    >
+                        <span>Pusat Bantuan</span>
+                        <span className="material-symbols-outlined">
+                            support_agent
+                        </span>
+                    </ButtonMailto>
                 </div>
             </main>
             <Footer></Footer>
