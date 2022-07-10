@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\ExchangeController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\ProfileController;
@@ -91,8 +92,12 @@ Route::controller(ProfileController::class)->middleware('auth')->group(function 
 });
 
 
-Route::get('/change-password', function () {
-    return Inertia::render('Auth/ChangePassword');
+
+Route::controller(ChangePasswordController::class)->middleware('auth')->group(function () {
+    Route::get('/change-password', function () {
+        return Inertia::render('Auth/ChangePassword');
+    });
+    Route::post('/change-password', 'store');
 });
 
 require __DIR__ . '/auth.php';
