@@ -2,18 +2,17 @@ import Button from '@/Components/Button';
 import Input from '@/Components/Input';
 import Label from '@/Components/Label';
 import NavBar from '@/Containers/NavBar';
-import Authenticated from '@/Layouts/Authenticated';
 import Guest from '@/Layouts/Guest';
 import { Head } from '@inertiajs/inertia-react';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import swal from 'sweetalert';
 
 export default function ChangePassword(props) {
     const [current, setCurrent] = useState(String);
     const [newPassword, setNewPassword] = useState(String);
     const [confirmNewPassword, setConfirmNewPassword] = useState(String);
     const [token, setToken] = useState(String);
-    const [errorOld, setErrorOld] = useState(null);
     const [same, setSame] = useState(true);
 
     useEffect(() => {
@@ -47,7 +46,24 @@ export default function ChangePassword(props) {
             new_password_confirmation: confirmNewPassword
         };
 
-        axios.post('/change-password', data).then((response) => console.log(response.data))
+        if(!same) {
+            swal('Error', 'Input field must be the same', 'error');
+            return;
+        }
+
+        axios.post('/change-password', data).then(response => {
+            if (response.data.error) {
+                swal('Error', response.data.message, response.data.status)
+                .then(() => {
+                    setCurrent('')
+                    setNewPassword('')
+                    setConfirmNewPassword('')
+                })
+            } else {
+                swal('Success', response.data.message, response.data.status)
+                .then(() => window.history.back());
+            }
+        })
     }
 
     return (

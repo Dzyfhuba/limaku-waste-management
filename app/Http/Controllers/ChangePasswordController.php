@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreChangePasswordRequest;
 use App\Http\Requests\UpdateChangePasswordRequest;
 use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -55,7 +54,6 @@ class ChangePasswordController extends Controller
             'error' => false,
             'status' => 'success',
             'message' => 'Your password has been successfully changed',
-            'data' => Auth::attempt(['email' => Auth::user()->email, 'password' => $request->old_password])
         ]);
     }
 
