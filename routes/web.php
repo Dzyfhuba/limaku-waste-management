@@ -90,4 +90,9 @@ Route::controller(ProfileController::class)->middleware('auth')->group(function 
     Route::post('/profile/{profile}', 'update');
 });
 
+
+Route::get('/change-password', function () {
+    return Inertia::render('Auth/ChangePassword');
+});
+
 require __DIR__ . '/auth.php';

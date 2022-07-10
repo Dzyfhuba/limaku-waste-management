@@ -68,7 +68,7 @@ export default function Profile(props) {
 
     return (
         <Guest>
-            <Head title="Dashboard"></Head>
+            <Head title="Profile"></Head>
             <NavBar auth={props.auth}></NavBar>
             <main className="justify-start">
                 <div className="w-full shadow-lg h-20 flex items-center justify-center">
@@ -192,7 +192,9 @@ export default function Profile(props) {
                     </div>
                 </div>
                 <div className="lg:mx-44 mx-5">
-                    <ButtonAnchor className='w-full flex justify-between'>
+                    <ButtonAnchor className='w-full flex justify-between'
+                    href={'/change-password'}
+                    >
                         <span>Ubah Kata Sandi</span>
                         <span className="material-symbols-outlined">
                             lock_reset
