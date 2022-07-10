@@ -29,7 +29,7 @@ export default function NavBar({ ...props }) {
         <Dropdown className="w-100">
             <Dropdown.Trigger>
                 <span
-                    className=" -100 rounded-lg justify-content-center"
+                    className="rounded-lg justify-content-center"
                     style={{ display: 'inline-flex' }}
                 >
                     <Button
@@ -40,12 +40,12 @@ export default function NavBar({ ...props }) {
                             padding: '10px',
                         }}
                     >
-                        <span className="username dark:text-neutral-100">
+                        <span className="username">
                             {props.auth.user == undefined
                                 ? ''
                                 : props.auth.user.name}
                         </span>
-                        <span className="material-symbols-outlined ms-2 d-lg-block d-none dark:text-neutral-100">
+                        <span className="material-symbols-outlined ms-2 d-lg-block d-none">
                             account_circle
                         </span>
                     </Button>

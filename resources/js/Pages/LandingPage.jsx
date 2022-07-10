@@ -8,6 +8,7 @@ import PickupWaste from '@/Containers/PickupWaste';
 import DropoffWaste from '@/Containers/DropoffWaste';
 import { useEffect } from 'react';
 import axios from 'axios';
+import Workflow from '@/Containers/Workflow';
 
 export default function LandingPage(props) {
     const [auth, setAuth] = useState(Boolean);
@@ -73,7 +74,11 @@ export default function LandingPage(props) {
                     </div>
                 </article>
                 { auth ?
-                (<><PickupWaste></PickupWaste><DropoffWaste></DropoffWaste></>)
+                (<>
+                    <Workflow></Workflow>
+                    <PickupWaste></PickupWaste>
+                    <DropoffWaste></DropoffWaste>
+                </>)
                 : ''
                 }
             </main>
